@@ -8,4 +8,4 @@ mongoose.connect(process.env.MONGOOSE_URI ||
     useFindAndModify: false
 })
 
-HTMLSourceElement.exports = mongoose.connection;
+module.exports = mongoose.connection;

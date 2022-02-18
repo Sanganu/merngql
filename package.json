@@ -4,14 +4,16 @@
   "description": "MERN stack with graph ql",
   "main": "index.js",
   "scripts": {
-    "start":"node server.js",
-    "dev":"concurrently \"cd server && npm run watch\" \"npm start\"",
-    "install":"cd server && npm  install && cd .. && cd client && npm install ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "concurrently \"cd server && npm run watch\" \"npm start\"",
+    "install": "cd server && npm  install && cd .. && cd client && npm install ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "cd server && npm run seed"
   },
   "author": "Sangeetha.K",
   "license": "MIT",
   "dependencies": {
     "concurrently": "^7.0.0"
+  
   }
 }

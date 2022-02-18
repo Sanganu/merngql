@@ -5,18 +5,18 @@ const {gql} = require("apollo-server-express");
 // Define Query
 const typeDefs = gql`
    type Book {
-       _id:ID,
+       _id:ID
        title:String
        author:[String]
-       pages:int,
+       pages:Int
        additional_details:String
    }
    type Query{
        books: [Book]  
        book(title:String!) : Book
    }
-   typeMutation{
-       addBook(titleL String!,author:String,page:int,additional_details:String)
+   type Mutation{
+       addBook(title: String!,author:[String], page:Int,additional_details:String)
    }
 `
 

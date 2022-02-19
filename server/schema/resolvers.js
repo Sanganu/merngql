@@ -2,10 +2,10 @@ const {Book}= require("../models");
 
 const resolvers = {
     Query: {
-        books: async() =>{
+        getAllBooks: async() =>{
             return Book.find()  
          },
-        book:async(parent,{title}) => {
+        getBook:async(parent,{title}) => {
             return Book.findOne({title})
         }
     },

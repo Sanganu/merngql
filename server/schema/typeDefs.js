@@ -11,12 +11,21 @@ const typeDefs = gql`
        pages:Int
        additional_details:String
    }
-   type Query{
-       books: [Book]  
-       book(title:String!) : Book
+
+   input NewBook {
+    title: String!
+    author:[String]
+    page:Int
+    additional_details:String
    }
+
+   type Query{
+       getAllBooks: [Book]  
+       getBook(title:String!) : Book
+   }
+   
    type Mutation{
-       addBook(title: String!,author:[String], page:Int,additional_details:String)
+       addBook(newBook: NewBook) : Book
    }
 `
 

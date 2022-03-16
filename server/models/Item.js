@@ -11,12 +11,12 @@ const ItemSchema = new Schema({
               
 
         }],
-        pages: {
-                type: Number,
+        id: {
+                type: String,
                 required: true
         },
 
-        additional_details: {
+        descritption: {
                 type:String
         }
     

@@ -1,30 +1,39 @@
 import React from 'react';
-import {ApolloClient,InMemoryCcache,ApolloProvider,createHttpLink, InMemoryCache}from '@apollo/client';
-import {onError} from "@apollp/client/link.error"
-
+import {ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink}
+  from '@apollo/client';
+import {onError} from "@apollo/client/link/error"
+import Landing from "./pages/Landing";
+;
 import "./App.css";
+
+// Error handling the simplest method suggested in the GraphQL documentation
 const errorLink = onError(({graphqlErrors,networkError}) => {
   if (graphqlErrors){
-    graphqlErrors.map(({message,location,path}) => {
-      alert(`GraphQL Errors ${message} / Path -${path}/ Location =${location}`)
-    })
+    console.log(graphqlErrors)
   }
-})
-const link = from([
+});
+
+const link = createHttpLink({
     errorLink,
-  new HttpLink({url:"http://localhost:/3001/grphql"})
-])
+   uri : 'graphql'
+  })
 const client = new ApolloClient({
-  cache:new InMemoryCache,
+  cache:new InMemoryCache(),
   link: link
 })
 
 function App() {
   return (
+    <ApolloProvider client={client}>
     <div className="App">
-      <h1>hello</h1>
-        <p>Check</p>        
-     </div>   
+    <Landing/>
+    <Home />
+        
+     </div>  
+     </ApolloProvider> 
   );
 }
 

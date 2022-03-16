@@ -6,7 +6,7 @@ import {ApolloClient,
   from '@apollo/client';
 import {onError} from "@apollo/client/link/error"
 import Landing from "./pages/Landing";
-;
+import Home from "./pages/Home";
 import "./App.css";
 
 // Error handling the simplest method suggested in the GraphQL documentation

@@ -1,8 +1,9 @@
 import React from "react";
+import {Header} from "semantic-ui-react";
 
 const Landing =() => {
     return(<>
-    <header><h1>MERN stack with GraphQL</h1></header>
+     <Header size='huge'>MERN stack with GraphQL</Header>
     </>)
 }
 

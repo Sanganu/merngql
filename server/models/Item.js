@@ -6,17 +6,18 @@ const ItemSchema = new Schema({
                 required:true,
                 alias:'Book name'
         },
-        author:[{
+        authors:[{
                 type: String,
               
 
         }],
         id: {
                 type: String,
-                required: true
+                required: true,
+                unique: true
         },
 
-        descritption: {
+        description: {
                 type:String
         }
     

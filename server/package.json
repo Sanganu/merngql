@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server-express": "^3.6.3",
+    "axios": "^0.26.1",
     "express": "^4.17.3",
     "faker": "^6.6.6",
     "graphql": "^16.3.0",

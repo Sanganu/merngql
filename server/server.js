@@ -5,6 +5,7 @@ const { typeDefs, resolvers } = require("./schema");
 const db = require("./config/connection");
 const PORT = process.env.PORT || 3003;
 // on top of express to handle data request
+// getNewBooks:[NewBook]
 async function startgraphqlServer() {
     const graphqlserver = new ApolloServer({
         typeDefs, //how our data looks

@@ -1,8 +1,17 @@
 import React from "react";
-import { Card, CardBody, Card} from "react-bootstrap";
+import {useQuery} from "@apollo/client"
+import {GETNEWBOOKS} from "../utils/queries";
 
-const BookList= ()=> {
+const BookList= ({searchTerm})=> {
+    const{loading,error,data} = useQuery(GETNEWBOOKS,{variables:{searchTerm}});
+    if(loading) {return "Please wait";}
+    if (error) {return `Error ${error}`}
+    if(data) {console.log(data);}
+   
+    // console.log(userData)
+
     return(<>
+    <h1>Book List</h1>
     </>)
 }
 

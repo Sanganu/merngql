@@ -1,5 +1,6 @@
+
 import {gql} from "@apollo/client";
-export const QUERY_BOOKS = gql `
+export const GET_ALL_BOOKS = gql `
 {
     getAllBooks {
         books{
@@ -12,17 +13,20 @@ export const QUERY_BOOKS = gql `
         }
         
     }
-    getBook{
+}`
+export const GETBOOK = gql`
+{  getBook{
             _id
             title
             author
             id
             description
             publsihedDate
-        }
-
     }
-    ge5UserMe{
+}`
+
+export const GETUSERME = gql`
+{  getUserMe{
         name
         email
         bookCount
@@ -34,5 +38,58 @@ export const QUERY_BOOKS = gql `
         publishDate
         }
     }
+}`
+
+export const GETNEWBOOKS = gql `
+query getNewBooks($searchTerm :String!)
+{   getNewBooks{
+        title
+        authors
+        id
+        description
+    }
 }
 `
+
+// import {gql} from "@apollo/client";
+// export const QUERY_BOOKS = gql `
+// {
+//     getAllBooks {
+//         books{
+//             _id
+//             title
+//             author
+//             id
+//             description
+//             publishedDate
+//         }
+        
+//     }
+//     getBook{
+//             _id
+//             title
+//             author
+//             id
+//             description
+//             publsihedDate
+//     }
+//     getUserMe{
+//         name
+//         email
+//         bookCount
+//         savedBooks {
+//         title
+//         author
+//         id
+//         description
+//         publishDate
+//         }
+//     }
+//     getNewBooks{
+//         title
+//         authors
+//         id
+//         description
+//     }
+// }
+// `

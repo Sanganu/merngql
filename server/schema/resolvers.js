@@ -49,15 +49,18 @@ const resolvers = {
     },
     Mutation: {
         addBooks: async (parent, args) => {
-            const newBook = await Book.insertMany(args);//args are the field values
-            return newBook;
+            const newBooks = await Book.insertMany(args);//args are the field values
+            return newBooks;
         },
         addUser: async (parent, args) => {
             const newUser = await User.create(args);
             const jwtSign = signToken(newUser)
             return { jwtSign, newUser };
         },
-
+        addBook: async(parent,args) =>{
+            const newBook = await Book.create(args);
+            return newBook;
+        }
     }
 }
 

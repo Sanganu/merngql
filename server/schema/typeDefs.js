@@ -53,11 +53,11 @@ const typeDefs = gql`
    }
    
    type Mutation{
-       addBooks(newBook: NewBook) : Book
+       addBooks(newBooks: [NewBook]) : Book
        addUser(newUser: NewUser ): User
        deleteBook(bookId: ID! ):User
        login(email: String!,password:String!):Auth
-
+        addBook(newBook: NewBook):Book
    }
 `
 

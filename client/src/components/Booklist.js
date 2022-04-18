@@ -1,15 +1,19 @@
 import React from "react";
-import {useQuery} from "@apollo/client"
-import {GETNEWBOOKS} from "../utils/queries";
+import {useMutation} from "@apollo/client"
+import {ADD_BOOK} from "../utils/mutation";
 import { Card, Icon } from 'semantic-ui-react'
 const BookList= ({title,authors,id,description,image})=> {
+const [addBook,{error}] = useMutation(ADD_BOOK);
   
-  
-    
+const saveBook = () => {
+  let bookData = {
+    title,authors,id,description,image
+  }
+}
     const extra = (
       <a>
         <Icon name='user' />
-        Author:{authors}
+        Author/s:{authors}
       </a>
     )
   return(

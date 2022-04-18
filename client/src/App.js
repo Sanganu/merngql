@@ -6,6 +6,7 @@ import {
   createHttpLink
 }
   from '@apollo/client';
+import {setContext} from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error"
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";

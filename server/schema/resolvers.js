@@ -16,10 +16,8 @@ const resolvers = {
         getNewBooks: async (parent, { searchTerm }) => {
             console.log("Search", searchTerm)
             const queryURL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
-            axios({
-                url: queryURL,
-                method: "GET"
-            }).then( async ({data}) => {
+            axios.get(queryURL)
+               .then( async ({data}) => {
              
                 let items = data.items
                 // console.log(queryURL,items)
@@ -34,11 +32,12 @@ const resolvers = {
                             title: element.volumeInfo.title ||"Unknown Title",
                             authors: element.volumeInfo.authors ||["Author info is missing"],
                             id: element.id,
-                            description: element.volumeInfo.description || "DEscription Not Available"
+                            description: element.volumeInfo.description || "Description Not Available"
                         }
                     // }
                     return newBook;
                 });
+                console.log("SEARCHBOOKS",newSearchBooks)
                 return newSearchBooks;
             }).then(formattedBooks =>{ 
                 console.log("API Books formatted",formattedBooks)

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Card } from 'semantic-ui-react';
-import { Form, Message } from 'semantic-ui-react';
+import { Card,Form } from 'semantic-ui-react';
 import Booklist from "../components/Booklist";
 
 const Home = () => {
@@ -19,10 +18,10 @@ const Home = () => {
                 response.data.items.forEach(element => {
                     booksList.push({
                         title: element.volumeInfo.title,
-                        authors: element.volumeInfo.authors,
+                        authors: element.volumeInfo.authors ||["Author information not available"],
                         id: element.accessInfo.id,
                         description: element.volumeInfo.description,
-                        image: element.volumeInfo.imageLinks.thumbnail
+                        image: element.volumeInfo.imageLinks.smallThumbnail || "/images/placeholder-images.jpg"
                     })
                 });
                 setSearchBooks(booksList)
@@ -31,7 +30,8 @@ const Home = () => {
 
     }
 
-    return (<Card.Group centered>
+    return (
+    <Card.Group centered>
         {searchBooks.length > 0 ? <>
             {searchBooks.map((book, key) =>
                 <Booklist
@@ -49,7 +49,8 @@ const Home = () => {
                 <button onClick={handleSearchBooks} >Search Books</button>
             </Form>
         }
-    </Card.Group>)
+    </Card.Group>
+   )
 }
 
 export default Home;

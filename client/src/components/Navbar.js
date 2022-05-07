@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
-
+import {Header} from "semantic-ui-react";
 export default class Navbar extends Component {
   state = {}
 
@@ -35,6 +35,9 @@ export default class Navbar extends Component {
         >
          Search Books
         </Menu.Item>
+        <Header size='medium'>Book Search with Google API
+        <p>MERN stack with GraphQL</p>
+        </Header>
       </Menu>
     )
   }

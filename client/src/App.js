@@ -3,27 +3,32 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  createHttpLink
+  HttpLink,
+  from
 }
   from '@apollo/client';
-import {setContext} from "@apollo/client/link/context";
+// import {setContext} from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error"
-import Landing from "./pages/Landing";
-import Home from "./pages/Home";
+// import Landing from "./pages/Landing";
+import Search from "./pages/Search";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
 // Error handling the simplest method suggested in the GraphQL documentation
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
-    console.log(graphqlErrors)
+    console.log(`GraphQL Errors _______${graphqlErrors}______________End GraphQL Errors`)
+  }
+  if(networkError){
+    console.log(`Graph network error *****${networkError}*****end network error`);
   }
 });
 
-const link = createHttpLink({
+const link = from([
   errorLink,
-  uri: 'graphql'
-})
+ new HttpLink({uri:"http://localhost:3003/graphql"})
+])
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: link
@@ -34,9 +39,8 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <Navbar />
-        <Landing />
-        <Home />
-
+        {/* <Landing /> */}
+        <Search />
       </div>
     </ApolloProvider>
   );

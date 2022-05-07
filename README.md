@@ -1,5 +1,6 @@
 # MERN Stack with GraphQL
 Client: Apollo/Client
+Server: Apollo server express
 
 ## APIs
 
@@ -16,4 +17,6 @@ Client: Apollo/Client
 
 ### Sandbox Screenshots:
 
-[Screen1]()
+[Screen Shot]()
+
+[Screen Shot]()

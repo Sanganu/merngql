@@ -1,9 +1,11 @@
 import React from "react";
-import {Header} from "semantic-ui-react";
-
+import Signup from "./Signup";
+import Login from "./Login"; 
 const Landing =() => {
     return(<>
-     <Header size='huge'>MERN stack with GraphQL</Header>
+
+     <Signup />
+     <Login />
     </>)
 }
 

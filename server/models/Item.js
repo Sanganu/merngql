@@ -1,5 +1,5 @@
 const {Schema,model}=require("mongoose");
-const ItemSchema = new Schema({
+const itemSchema = new Schema({
     
         title : {
                 type:String,
@@ -8,8 +8,6 @@ const ItemSchema = new Schema({
         },
         authors:[{
                 type: String,
-              
-
         }],
         id: {
                 type: String,
@@ -27,5 +25,5 @@ const ItemSchema = new Schema({
 });
 
 
-const Book = model('Book',ItemSchema);
-module.export = Book;
+const BookModel = model('BookModel',itemSchema);
+module.export = BookModel;

@@ -1,8 +1,8 @@
-const {Scheema, model} = require("mongoose");
+const {Schema, model} = require("mongoose");
 const bcrypt = require("bcrypt");
 const itemSchema = require("./Item");
 
-const userSchema = new SchemaMetaFieldDef({
+const userSchema = new Schema({
     name: {
         type:String,
         required:true,

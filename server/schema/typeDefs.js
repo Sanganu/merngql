@@ -9,7 +9,7 @@ const typeDefs = gql`
     authors:[String]
     id:String!
     description:String
-    
+    image:String
    }
 
    type Book{
@@ -18,6 +18,7 @@ const typeDefs = gql`
        authors:[String]
        id:String
        description:String
+       image:String
    }
    type User {
        _id: ID!
@@ -37,12 +38,13 @@ const typeDefs = gql`
     authors:[String]
     id:String
     description:String
+    image:String
    }
  
    input NewUser {
-    name: String!
-    email:String
-  
+            name: String!
+            email:String!
+             password:String!
    }
 
    type Query{
@@ -57,7 +59,7 @@ const typeDefs = gql`
        addUser(newUser: NewUser ): User
        deleteBook(bookId: ID! ):User
        login(email: String!,password:String!):Auth
-        addBook(newBook: NewBook):Book
+       addBook(newBook: NewBook):Book
    }
 `
 

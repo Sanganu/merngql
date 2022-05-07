@@ -1,11 +1,16 @@
-const { Book } = require("../models");
+const  Book  = require("../models/Item");
 const { signToken } = require("../Auth");
 const axios = require("axios");
 
 const resolvers = {
     Query: {
         getAllBooks: async (parent, args) => {
-            return Book.find()
+             Book.find({})
+             .then(records => records)
+             .catch(error => {
+                 console.log("Error in getting all books",error)
+                 return error
+             })
         },
         getBook: async (parent, { title }) => {
             return Book.findOne({ title })
@@ -50,15 +55,19 @@ const resolvers = {
     Mutation: {
         addBooks: async (parent, args) => {
             const newBooks = await Book.insertMany(args);//args are the field values
+           console.log("New Book",newBooks)
             return newBooks;
         },
         addUser: async (parent, args) => {
+            console.log("User",args)
             const newUser = await User.create(args);
             const jwtSign = signToken(newUser)
             return { jwtSign, newUser };
         },
         addBook: async(parent,args) =>{
+            console.log("ADD New Book",args)
             const newBook = await Book.create(args);
+            console.log("add book",newBook)
             return newBook;
         }
     }

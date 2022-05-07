@@ -1,3 +1,4 @@
 module.exports = {
-    Book:require('./Item')
+    Book:require('./Item'),
+    User:require('./User')
 }

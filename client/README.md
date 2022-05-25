@@ -3,8 +3,8 @@
 
 ### Requirements
 - User should be able to sign up and login
-- USer can save any book only after login
--
+- User can save any book only after login
+- Google Books API
 
 ### Acknowledgments
 
@@ -12,4 +12,10 @@
 ####  Coded By
 Sangeetha K
 
-###
+### References
+[1] 
+
+
+
+-- Still working on getting to save book
+

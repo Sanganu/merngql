@@ -12,7 +12,6 @@ export const ADD_BOOK = gql`
             Book{
                 _id
                 title
-                authors
                 id
                 description
                 image

@@ -1,6 +1,8 @@
+
 const  Book  = require("../models/Item");
 const { signToken } = require("../Auth");
 const axios = require("axios");
+
 
 const resolvers = {
     Query: {
@@ -69,6 +71,16 @@ const resolvers = {
             const newBook = await Book.create(args);
             console.log("add book",newBook)
             return newBook;
+        },
+        loginUser:async (parent,{email,password}) =>{
+            const validUser = await User.findOne({email})
+            if (validUser){
+                const checkPassword = validUser.isCorrectPassword(password)
+                if(checkPassword){
+                    const jwtSign = signToken(validUser)
+                    return {jwtSign,newUser}
+                }
+            }
         }
     }
 }

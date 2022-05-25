@@ -33,33 +33,26 @@ const typeDefs = gql`
        user: User
    }
 
-   type ApiBook{
-    title:String
-    authors:[String]
-    id:String
-    description:String
-    image:String
-   }
  
    input NewUser {
             name: String!
             email:String!
-             password:String!
+            password:String!
    }
 
    type Query{
        getAllBooks: [Book]  
        getBook(title:String!) : Book
        getUserMe: User
-       getNewBooks(searchTerm:String!): [ApiBook]
+       getNewBooks(searchTerm:String!): [Book]
    }
    
    type Mutation{
-       addBooks(newBooks: [NewBook]) : Book
-       addUser(newUser: NewUser ): User
+       addToBook(newBooks: [NewBook]) : Book
+       addUser(newUser: NewUser ): Auth
        deleteBook(bookId: ID! ):User
-       login(email: String!,password:String!):Auth
-       addBook(newBook: NewBook):Book
+       loginUser(email: String!,password:String!):Auth
+       addBook(bookApiData: NewBook!):Book
    }
 `
 

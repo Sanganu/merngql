@@ -29,3 +29,10 @@ $input-background-color: $beige-lighter;
 $input-border-color: transparent;
 $input-shadow: none; */
 
+.hero{
+  background-image: url(./pages/images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width:100vw;
+  height:100vh;
+}

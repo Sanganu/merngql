@@ -1,6 +1,7 @@
 
 import {gql} from "@apollo/client";
 export const GET_ALL_BOOKS = gql `
+query getAllBooks
 {
     getAllBooks {
         books{
@@ -15,6 +16,7 @@ export const GET_ALL_BOOKS = gql `
     }
 }`
 export const GETBOOK = gql`
+query getBook
 {  getBook{
             _id
             title
@@ -26,6 +28,7 @@ export const GETBOOK = gql`
 }`
 
 export const GETUSERME = gql`
+query getUserMe
 {  getUserMe{
         name
         email

@@ -20,6 +20,13 @@ const typeDefs = gql`
        description:String
        image:String
    }
+   type ApiBook{
+    title: String!
+    authors:[String]
+    id:String!
+    description:String
+    image:String  
+   }
    type User {
        _id: ID!
        name: String!
@@ -44,7 +51,7 @@ const typeDefs = gql`
        getAllBooks: [Book]  
        getBook(title:String!) : Book
        getUserMe: User
-       getNewBooks(searchTerm:String!): [Book]
+       getNewBooks(searchTerm:String!): [ApiBook]
    }
    
    type Mutation{

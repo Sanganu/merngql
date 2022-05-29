@@ -2,6 +2,7 @@ import React , {useState} from "react";
 import { Button, Form } from 'semantic-ui-react'
 import {useMutation} from "@apollo/client";
 import {ADD_USER} from "../utils/mutation";
+import Auth from "../utils/auth";
 
 const Signup = () => {
     const [userData,setUserData] = useState({
@@ -24,6 +25,7 @@ const Signup = () => {
                 }
             })
             console.log(data,"Add User")
+            Auth.login(data.addUser.token)
         }
         catch(error){
             console.error(error)
@@ -38,7 +40,6 @@ return(<Form>
       <Form.Input label='Password'  onChange={handleUserInput} name="password"  value={userData.password} placeholder='Password' />
       <Form.Input label='Confirm Password' name="confirm"  onChange={handleUserInput} placeholder='Confirm Password' />
     </Form.Group>
-    <Form.Checkbox label='I agree to the Terms and Conditions' />
     <Button onClick={createNewUser} type='submit'>Submit</Button>
   </Form>)
 }

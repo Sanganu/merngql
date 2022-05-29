@@ -10,7 +10,7 @@ const Home = () => {
 
     const handleSearchBooks = () => {
         setSearchBooks(true)
-        console.log(searchTerm)
+        console.log(searchTerm,"ST")
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
             .then(response => {
 

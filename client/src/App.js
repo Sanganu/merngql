@@ -9,9 +9,9 @@ import {
   from '@apollo/client';
 // import {setContext} from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error"
-// import Landing from "./pages/Landing";
+import Landing from "./pages/Landing";
 import Search from "./pages/Search";
-import Navbar from "./components/Navbar";
+// import Navigation from "./components/Navbar";
 import "./App.css";
 
 // Error handling the simplest method suggested in the GraphQL documentation
@@ -38,8 +38,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <Navbar />
-        {/* <Landing /> */}
+        <Landing />
         <Search />
       </div>
     </ApolloProvider>

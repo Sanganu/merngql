@@ -29,7 +29,7 @@ const resolvers = {
             console.log("Search", searchTerm)
             const queryURL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`
             axios.get(queryURL)
-                .then(async ({ data }) => {
+                .then( ({ data }) => {
 
                     let items = data.items
                     // console.log(queryURL,items)
@@ -52,10 +52,11 @@ const resolvers = {
                     });
                     console.log("SEARCHBOOKS", newSearchBooks)
                     return newSearchBooks;
-                }).then(formattedBooks => {
-                    console.log("API Books formatted", formattedBooks)
-                    return formattedBooks;
                 })
+                // .then(formattedBooks => {
+                //     console.log("API Books formatted", formattedBooks)
+                //     return formattedBooks;
+                // })
 
         }
 

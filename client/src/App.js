@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   ApolloClient,
   InMemoryCache,
@@ -10,8 +10,11 @@ import {
 // import {setContext} from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error"
 import Landing from "./pages/Landing";
-import Search from "./pages/Search";
-// import Navigation from "./components/Navbar";
+import Navigation from "./components/Navbar";
+import Searchbooks from "./pages/Search";
+import Savebooks from "./pages/Search";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import "./App.css";
 
 // Error handling the simplest method suggested in the GraphQL documentation
@@ -34,15 +37,28 @@ const client = new ApolloClient({
   link: link
 })
 
+
 function App() {
+  const [activeItem,setActiveItem]=useState("home")
+  const renderPage = (activeItem) =>{
+    setActiveItem(activeItem)
+  }
   return (
     <ApolloProvider client={client}>
       <div className="App">
-        <Landing />
-        <Search />
+      <Navigation renderPage={renderPage} activeItem={activeItem}/>
+      {activeItem==="home" && <Landing />}
+      {activeItem === "signup" && <Signup/>}
+      {activeItem === "login" && <Login />}
+      {activeItem === "savebooks" && <Savebooks />}
+      {activeItem === "searchbooks" && <Searchbooks />}
+      {activeItem === "logoff" && <Landing />}
       </div>
     </ApolloProvider>
   );
 }
+
+
+
 
 export default App;

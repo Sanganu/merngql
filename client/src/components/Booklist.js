@@ -1,4 +1,4 @@
-import React from "react";
+import React ,{useState} from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_BOOK } from "../utils/mutation";
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
@@ -7,10 +7,10 @@ import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
 const BookList = ({ title, authors, id, description, image }) => {
   const [addBook, { error }] = useMutation(ADD_BOOK);
-
+  const [status, setStatus] = useState("false")
   const saveBook = () => {
-
-      addBook({
+    try {
+      const savedB = addBook({
         variables: {
           title: title,
           authors: authors,
@@ -19,10 +19,11 @@ const BookList = ({ title, authors, id, description, image }) => {
           image: image
         }
       })
-      if(error){
-        alert(error)
-      }
+
       console.log("Book Saved")
+    } catch (err) {
+      console.error("Error in saving book", err)
+    }
   }
 
   return (<div>
@@ -37,17 +38,18 @@ const BookList = ({ title, authors, id, description, image }) => {
           <Icon name='user' />
           Author/s:{authors}
         </p>
-        <Button onClick={saveBook} basic color='green'>
-          Save Book
-    </Button>
+        {status ?
+          <Button onClick={saveBook} basic color='green'>
+            Save Book
+    </Button> : <h6>Book already Saved</h6>}
       </Card.Content>
-
+  
     </Card>
   </div>)
-
-
-}
-
+  
+  
+  }
+  
 // const BookList= ({searchTerm})=> {
 //     const{loading,error,data} = useQuery(GETNEWBOOKS,{variables:{searchTerm}});
 //     if(loading) {return "Please wait";}

@@ -16,6 +16,7 @@ const Home = () => {
 
                 let booksList = []
                 response.data.items.forEach(element => {
+                    try{
                     booksList.push({
                         title: element.volumeInfo.title,
                         authors: element.volumeInfo.authors ||["Author information not available"],
@@ -23,6 +24,9 @@ const Home = () => {
                         description: element.volumeInfo.description,
                         image: element.volumeInfo.imageLinks.smallThumbnail || "/images/placeholder-images.jpg"
                     })
+                }catch (err){
+                    console.warn("unable to retrive",element,err)
+                }
                 });
                 setSearchBooks(booksList)
                 console.log(searchBooks, "API data")

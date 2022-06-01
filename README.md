@@ -17,6 +17,8 @@ Server: Apollo server express
 
 ### Sandbox Screenshots:
 
-[Screen Shot]()
+[ADD_USER](/screenshots/adduser.PNG)
 
-[Screen Shot]()
+[LOGIN USER](/screenshots/loginuser.PNG)
+
+[Root](/screenshots/rootMutation.PNG)

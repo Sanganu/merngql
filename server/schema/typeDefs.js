@@ -52,6 +52,7 @@ const typeDefs = gql`
        getBook(title:String!) : Book
        getUserMe: User
        getNewBooks(searchTerm:String!): [ApiBook]
+       getAllUsers: [User]
    }
    
    type Mutation{

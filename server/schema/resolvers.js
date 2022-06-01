@@ -8,7 +8,7 @@ const { AuthenticationError } = require('apollo-server-express')
 const resolvers = {
     Query: {
         getAllBooks: async (parent, args) => {
-            Book.find({})
+            Book.find()
                 .then(records => records)
                 .catch(error => {
                     console.log("Error in getting all books", error)
@@ -19,11 +19,11 @@ const resolvers = {
             return Book.findOne({ title })
         },
         getUserMe: async (parent, args, context) => {
-            if (context.user) {
+            // if (context.user) {
                 const userDashboard = User.findOne({ _id: context.user_id }).select('-__v -password');
                 return userDashboard;
-            }
-            throw new AuthenticationError('Not logged in');
+            // }
+            // throw new AuthenticationError('Not logged in');
         },
         getNewBooks: async (parent, { searchTerm }) => {
             console.log("Search", searchTerm)
@@ -58,23 +58,28 @@ const resolvers = {
                 //     return formattedBooks;
                 // })
 
-        }
+        },
+        
+    getAllUsers:async(parent,args,context) =>{
+     const userData =  User.find()
+     return userData;
+    }
 
     },
     Mutation: {
         addBook: async (parent, {bookApiData}, context) => {
-            if (context.user) {
-                console.log("addbook",bookApiData)
-                const addUserBooks = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
+            // if (context.user) {
+                // console.log("addbook",bookApiData)
+                const addUserBooks = await User.findOneAndUpdate(
+                    { _id: "628e1ec92e26bbfb586f1036"}, //context.user._id },
                     { $push: { savedItems: bookApiData } },
                     { new: true }
                 )
 
                 console.log("New Book", addUserBooks)
                 return addUserBooks;
-            }
-            throw new AuthenticationError("Please Login to save book")
+            // }
+            // throw new AuthenticationError("Please Login to save book")
         },
         deleteBook: async (parent, args, context) => {
             if (context.user) {

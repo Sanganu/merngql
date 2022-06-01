@@ -12,15 +12,17 @@ const BookList = ({ title, authors, id, description, image }) => {
     try {
       const savedB = addBook({
         variables: {
-          title: title,
-          authors: authors,
-          id: id,
-          description: description,
-          image: image
+          bookApiData: {
+            title: title,
+            authors: authors,
+            id: id,
+            description: description,
+            image: image
+          }
         }
       })
 
-      console.log("Book Saved")
+      console.log("Book Saved",savedB)
     } catch (err) {
       console.error("Error in saving book", err)
     }

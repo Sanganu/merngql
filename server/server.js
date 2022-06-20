@@ -4,6 +4,7 @@ const { typeDefs, resolvers } = require("./schema");
 const {auth} = require("./Auth");
 const db = require("./config/connection");
 const PORT = process.env.PORT || 3003;
+const path = require("path")
 // on top of express to handle data request
 // getNewBooks:[NewBook]
 async function startgraphqlServer() {

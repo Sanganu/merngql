@@ -21,24 +21,24 @@ const Signup = () => {
         try{
             const {data} = await addUser({
                 variables: {
-                    ...userData
+                   newUser:{ ...userData}
                 }
             })
-            console.log(data,"Add User")
+            console.log(data,"Add User",error)
             Auth.login(data.addUser.token)
         }
         catch(error){
             console.error(error)
         }
     }
-return(<Form>
+return(<Form className="ui text container m-6 p-6">
     <Form.Group unstackable widths={2}>
       <Form.Input label='User Profile name' value={userData.name}  onChange={handleUserInput} name="name" placeholder='User Profile name' />
       <Form.Input label='User Email'  onChange={handleUserInput} value={userData.email} name="email" placeholder='User Email' />
     </Form.Group>
     <Form.Group widths={2}>
-      <Form.Input label='Password'  onChange={handleUserInput} name="password"  value={userData.password} placeholder='Password' />
-      <Form.Input label='Confirm Password' name="confirm"  onChange={handleUserInput} placeholder='Confirm Password' />
+      <Form.Input label='Password'  onChange={handleUserInput} name="password"  type="password" value={userData.password} placeholder='Password' />
+      <Form.Input label='Confirm Password' name="confirm"  onChange={handleUserInput}  type="password" placeholder='Confirm Password' />
     </Form.Group>
     <Button onClick={createNewUser} type='submit'>Submit</Button>
   </Form>)

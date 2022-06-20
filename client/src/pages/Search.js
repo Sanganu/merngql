@@ -35,7 +35,7 @@ const Home = () => {
     }
 
     return (
-    <Card.Group centered>
+    <Card.Group centered className="ui text container">
         {searchBooks.length > 0 ? <>
             {searchBooks.map((book, key) =>
                 <Booklist
@@ -48,7 +48,7 @@ const Home = () => {
 
         </>
             :
-            <Form success>
+            <Form success className="ui text container">
                 <Form.Input type='text' onChange={(event) => setSearchTerm(event.target.value)} value={searchTerm} placeholder="Enter Search String" />
                 <button onClick={handleSearchBooks} >Search Books</button>
             </Form>

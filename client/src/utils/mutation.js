@@ -15,7 +15,7 @@ mutation addBook($bookApiData: NewBook!) {
 
 export const ADD_USER= gql `
 mutation  addUser($newUser : NewUser!){
-    addUser(newUser :$NewUser){
+    addUser(newUser :$newUser){
         token
         user{
             name

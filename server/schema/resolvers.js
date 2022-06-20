@@ -69,7 +69,7 @@ const resolvers = {
     Mutation: {
         addBook: async (parent, {bookApiData}, context) => {
             // if (context.user) {
-                // console.log("addbook",bookApiData)
+                 // console.log("addbook",bookApiData)
                 const addUserBooks = await User.findOneAndUpdate(
                     { _id: "628e1ec92e26bbfb586f1036"}, //context.user._id },
                     { $push: { savedItems: bookApiData } },
@@ -95,10 +95,10 @@ const resolvers = {
             throw new AuthenticationError("Please Login to save book")
         },
         addUser: async (parent, args) => {
-            console.log("User", {name:args.newUser.name,
-                email:args.newUser.email,password:args.newUser.password})
-            const newUser = await User.create({name:args.newUser.name,
-            email:args.newUser.email,password:args.newUser.password});
+            console.log("User", args.newUser)
+                // name:args.newUser.name,
+                // email:args.newUser.email,password:args.newUser.password}
+            const newUser = await User.create(args.newUser);
             const jwtSign = signToken(newUser)
             console.log(jwtSign,newUser)
             const myUser = {

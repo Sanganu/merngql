@@ -14,7 +14,7 @@ const BookList = ({ title, authors, id, description, image }) => {
         variables: {
           bookApiData: {
             title: title,
-            authors: authors,
+            authors: authors, 
             id: id,
             description: description,
             image: image

@@ -1,7 +1,7 @@
 import React ,{useState} from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_BOOK } from "../utils/mutation";
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+
 
 
 
@@ -31,22 +31,22 @@ const BookList = ({ title, authors, id, description, image }) => {
   return (<div>
 
 
-    <Card>
-      <Card.Content>
-        <Image src={image} size="medium" circular verticalAlign='middle' />{' '}
-        <Card.Header>{title}</Card.Header>
-        <Card.Description>{description}</Card.Description>
+    <section>
+      <article>
+        <img src={image} size="medium" circular verticalAlign='middle' />{' '}
+        <h4>{title}</h4>
+        <p>{description}</p>
         <p>
-          <Icon name='user' />
+          <img name='user' />
           Author/s:{authors}
         </p>
         {status ?
-          <Button onClick={saveBook} basic color='green'>
+          <button onClick={saveBook} basic color='green'>
             Save Book
-    </Button> : <h6>Book already Saved</h6>}
-      </Card.Content>
+    </button> : <h6>Book already Saved</h6>}
+      </article>
   
-    </Card>
+    </section>
   </div>)
   
   

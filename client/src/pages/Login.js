@@ -1,8 +1,8 @@
-import React ,{useState, useEffect} from "react";
+import React ,{useState} from "react";
 
-import {useQuery} from "@apollo/client"//hook to fetch data
+//import {useQuery} from "@apollo/client"//hook to fetch data
 
-import { Button, Form, Message } from 'semantic-ui-react'
+
 
 const Login = () => {
   const [userLogin,setUserLogin] = useState({
@@ -17,13 +17,14 @@ const Login = () => {
   const handleLogin = () => {
 
   }
-  return(
-  <Form error>
-    <Form.Input label='Email' value={userLogin.email} onChange={handleInputChange} placeholder='joe@schmoe.com' />
-    <Form.Input label='Password' onChange={handleInputChange} value={userLogin.password} placeholder='Password' />
-    <Button onClick={handleLogin}>Submit</Button>
-  </Form>
-)
+  return(<main className="container mx-auto">
+  <h3>Login</h3>
+  <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  value={userLogin.email} onChange={handleInputChange} placeholder='joe@schmoe.com' />
+    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  onChange={handleInputChange} value={userLogin.password} placeholder='Password' />
+    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  onClick={handleLogin}>Submit</button>
+  </form>
+</main>)
 } 
 
 export default Login;

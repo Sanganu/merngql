@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Menu, Segment } from 'semantic-ui-react'
+
 
 export default class MenuExampleTabularOnLeft extends Component {
   state = { activeItem: 'bio' }
@@ -10,39 +10,32 @@ export default class MenuExampleTabularOnLeft extends Component {
     const { activeItem } = this.state
 
     return (
-      <Grid>
-        <Grid.Column width={4}>
-          <Menu fluid vertical tabular>
-            <Menu.Item
+      <section   width={4}>
+          <ul fluid vertical tabular>
+            <li
               name='bio'
               active={activeItem === 'bio'}
               onClick={this.handleItemClick}
-            />
-            <Menu.Item
+            >Bio</li>
+            <li
               name='pics'
               active={activeItem === 'pics'}
               onClick={this.handleItemClick}
-            />
-            <Menu.Item
+            >Pic</li>
+            <li
               name='companies'
               active={activeItem === 'companies'}
               onClick={this.handleItemClick}
-            />
-            <Menu.Item
+            >companies</li>
+            <li
               name='links'
               active={activeItem === 'links'}
               onClick={this.handleItemClick}
-            />
-          </Menu>
-        </Grid.Column>
+            >d</li>
+          </ul>
+        </section>
 
-        <Grid.Column stretched width={12}>
-          <Segment>
-            This is an stretched grid column. This segment will always match the
-            tab height
-          </Segment>
-        </Grid.Column>
-      </Grid>
+      
     )
   }
 }

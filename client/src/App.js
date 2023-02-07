@@ -3,8 +3,6 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  HttpLink,
-  from,
   createHttpLink
 }
   from '@apollo/client';
@@ -51,24 +49,24 @@ function App() {
   const renderPage = (activeItem) => {
     setActiveItem(activeItem)
   }
+  
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <Navigation renderPage={renderPage} activeItem={activeItem} />
-        <main className="container">
-          {activeItem === "home" && <Landing />}
-          {activeItem === "signup" && <Signup />}
-          {activeItem === "login" && <Login />}
-          {activeItem === "savebooks" && <Savebooks />}
-          {activeItem === "searchbooks" && <Searchbooks />}
-          {activeItem === "logoff" && <Landing />}
+ 
+          <main className="container">
+              {activeItem === "home" && <Landing />}
+              {activeItem === "signup" && <Signup />}
+              {activeItem === "login" && <Login />}
+              {activeItem === "savebooks" && <Savebooks />}
+              {activeItem === "searchbooks" && <Searchbooks />}
+              {activeItem === "logoff" && <Landing />}
           </main>
+     
       </div>
     </ApolloProvider>
-        );
-      }
+    );
+}
       
-      
-      
-      
-      export default App;
+export default App;

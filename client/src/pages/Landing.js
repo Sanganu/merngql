@@ -1,14 +1,15 @@
 import React from "react";
-import {Container,Header,Button,Icon} from "semantic-ui-react";
-import Signup from "./Signup";
-import Login from "./Login"; 
-import bimg from "./images/background.jpg";
 
-const Landing =() => {
-    return(<>
 
-    <h1>Landing Page</h1>
-    
+
+const Landing = () => {
+    return (<>
+        <div className="page-container ml-0 bg-white rounded-xl shadow-md overflow-hidden ">
+           
+                    <img className="h-full w-full object-cover md:h-full md:w-full" src="/images/background.jpeg" alt="landing image blue color prominent peacock feathers" />
+                  
+         
+        </div>
     </>)
 }
 

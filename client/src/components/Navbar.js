@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Menu } from 'semantic-ui-react'
-import {Header} from "semantic-ui-react";
+import React from 'react'
+
+
 
 
 
@@ -9,17 +9,17 @@ const Navigation = ({renderPage,activeItem}) => {
 
 
     return(<>
-        <nav className="ui equal width grid">
+        <nav className="flex flex-wrap justify-between p-5 bg-gradient-to-r from-slate-400 to-indigo-600">
      
-            <Menu.Item className="centered aligned two column row olive" onClick={()=>renderPage("home")}>
+            <h2 className="centered aligned two column row olive" onClick={()=>renderPage("home")}>
              Personal Library
-            </Menu.Item>
-            <section className="equal width row black">
-            <Menu.Item  className="column"  onClick={()=>renderPage("signup")}>Sign Up</Menu.Item>
-            <Menu.Item  className="column" onClick={()=>renderPage("login")}>Login</Menu.Item>
-            <Menu.Item  className="column" onClick={()=>renderPage("savebooks")}>Saved Items</Menu.Item>
-            <Menu.Item  className="column" onClick={()=>renderPage("searchbooks")}>Search Items</Menu.Item>
-            <Menu.Item className="column"  onClick={()=>renderPage("logoff")}>Logoff</Menu.Item>
+            </h2>
+            <section className="flex flex-wrap  hover:flex-wrap-reverse space-x-5">
+            <li  className="column"  onClick={()=>renderPage("signup")}>Sign Up</li>
+            <li  className="column" onClick={()=>renderPage("login")}>Login</li>
+            <li  className="column" onClick={()=>renderPage("savebooks")}>Saved Items</li>
+            <li  className="column" onClick={()=>renderPage("searchbooks")}>Search Items</li>
+            <li className="column"  onClick={()=>renderPage("logoff")}>Logoff</li>
             </section>
         </nav>
            

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-
-mongoose.connect(process.env.MONGOOSE_URI ||
-    "mongodb://localhost/graphql",{
+// process.env.MONGOOSE_URI ||
+mongoose.connect("mongodb://localhost/bookgraphql",{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true,
+    family:4
  
 })
 

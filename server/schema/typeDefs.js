@@ -7,19 +7,21 @@ const typeDefs = gql`
    input NewBook {
     title: String!
     authors:[String]
-    id:String!
+    bookId:String!
     description:String
     image:String
+    link:String
    }
 
    type Book{
-       _id:ID!
+       bookId:ID!
        title:String
        authors:[String]
-       id:String
+       link:String
        description:String
        image:String
    }
+
    type ApiBook{
     title: String!
     authors:[String]
@@ -27,6 +29,7 @@ const typeDefs = gql`
     description:String
     image:String  
    }
+
    type User {
        _id: ID!
        name: String!

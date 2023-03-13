@@ -36,7 +36,7 @@ const Home = () => {
 
     }
 
-    return (<main className="container mx-auto ml-6">
+    return (<main className="container mx-auto ">
         <section centered className="ui text container">
             {searchBooks.length > 0 ? <>
                 {searchBooks.map((book, key) =>
@@ -56,7 +56,7 @@ const Home = () => {
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  
                     onClick={handleSearchBooks} >Search Books</button>
                 </form>
-                </div>
+                      </div>
             }
       
         </section>

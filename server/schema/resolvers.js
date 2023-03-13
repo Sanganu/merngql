@@ -20,7 +20,7 @@ const resolvers = {
         },
         getUserMe: async (parent, args, context) => {
             // if (context.user) {
-                const userDashboard = User.findOne({ _id: context.user_id }).select('-__v -password');
+                const userDashboard = User.findOne({ _id: "628e1ec92e26bbfb586f1036" }).select('-__v -password');
                 return userDashboard;
             // }
             // throw new AuthenticationError('Not logged in');
@@ -60,10 +60,10 @@ const resolvers = {
 
         },
         
-    getAllUsers:async(parent,args,context) =>{
-     const userData =  User.find()
-     return userData;
-    }
+        getAllUsers:async(parent,args,context) =>{
+        const userData =  User.find()
+        return userData;
+        }
 
     },
     Mutation: {
@@ -106,7 +106,7 @@ const resolvers = {
                 email: newUser.email,
                 _id: newUser._id
             }
-            return { token:jwtSign, user: myUser };
+            return { token:jwtSign,user:newUser };
         },
         addToBook: async (parent, args, context) => {
             if (context.user) {

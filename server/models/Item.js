@@ -9,21 +9,25 @@ const itemSchema = new Schema({
         authors:[{
                 type: String,
         }],
-        id: {
+        bookId: {
                 type: String,
                 required: true,
-                unique: true
+                
         },
 
         description: {
-                type:String
+                type:String,
+                required: true,
         },
         image:{
                 type: String
+        },
+        link:{
+                type:String
         }
     
 });
 
 
-const BookModel = model('BookModel',itemSchema);
-module.export = BookModel;
+
+module.export = itemSchema;

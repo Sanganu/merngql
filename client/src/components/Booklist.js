@@ -41,7 +41,7 @@ const BookList = ({ title, authors, id, description, image }) => {
           Author/s:{authors}
         </p>
         {status ?
-          <button onClick={saveBook} basic color='green'>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={saveBook} basic color='green'>
             Save Book
     </button> : <h6>Book already Saved</h6>}
       </article>

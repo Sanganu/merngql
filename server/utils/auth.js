@@ -1,5 +1,5 @@
-requestuire("dotenv")
-const jwt = requestuire('jsonwebtoken');
+request("dotenv")
+const jwt = request('jsonwebtoken');
 const secret = process.env.APPSECRET;
 
 

@@ -6,7 +6,6 @@ import {
   createHttpLink
 }
   from '@apollo/client';
-import {BrowserRouter as Router, Routes,Route} from "react-router-dom";
 
 import { onError } from "@apollo/client/link/error"
 import Landing from "./pages/Landing";
@@ -53,19 +52,19 @@ function App() {
   
   return (
     <ApolloProvider client={client}>
-    <Router>
-      <>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Landing/>}/>
-        <Route path="/saved" element={<Savebooks />}/>
-        <Route path="/signup"element={<Signup/>}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/search" element={<Searchbooks/>}/>
-        <Route path="*" element={<h1>Wrong Route</h1>}/>
-      </Routes>
-      </>
-      </Router>
+      <div className="App">
+        <Navigation renderPage={renderPage} activeItem={activeItem} />
+ 
+          <main className="container">
+              {activeItem === "home" && <Landing />}
+              {activeItem === "signup" && <Signup     />}
+              {activeItem === "login" && <Login />}
+              {activeItem === "savebooks" && <Savebooks />}
+              {activeItem === "searchbooks" && <Searchbooks />}
+              {activeItem === "logoff" && <Landing />}
+          </main>
+     
+      </div>
     </ApolloProvider>
     );
 }

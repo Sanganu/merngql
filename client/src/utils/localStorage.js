@@ -1,4 +1,4 @@
-export const getSavedBookIds = () => {
+export const getSavedBooksList = () => {
   const savedBookIds = localStorage.getItem('saved_books')
     ? JSON.parse(localStorage.getItem('saved_books'))
     : [];

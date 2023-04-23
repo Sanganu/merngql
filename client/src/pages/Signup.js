@@ -8,9 +8,9 @@ const Signup = () => {
         name: "",
         email: "",
         password: ""
-    
+
     });
-    const[confirmPassword,setConfirmPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleUserInput = ({ target }) => {
@@ -28,9 +28,14 @@ const Signup = () => {
                     newUser: { ...userData }
                 }
             })
-            console.log(data, "Add User ----GRAPHL----------", error)
-           console.log("KEN",data.addUser.token)
-            Auth.login(data.token)
+            console.log(data.addUser, "Add User ----GRAPHL----------", error)
+            console.log("KEN", data.addUser.token)
+            Auth.login(data.addUser.token)
+            setUserData({
+                name: "",
+                email: "",
+                password: ""
+            })
         }
         catch (error) {
             console.error(error)
@@ -54,7 +59,8 @@ const Signup = () => {
             {/* <label className="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onChange={handleUserInput} onFocusOut={checkPassword} name="confirmPassword" type="password" value={confirmPassword} placeholder='Password' />
             <p name="error"className="help is-danger">This email is invalid</p> */}
-            <button  
+            <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  
                 onClick={createNewUser}
                 disabled={!(userData.email && userData.name && userData.password)}
                 type='submit'>Submit</button>

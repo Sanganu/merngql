@@ -1,7 +1,7 @@
 import {gql} from "@apollo/client";
 
 export const ADD_BOOK = gql`
-mutation addBook($bookApiData: NewBook!) {
+mutation AddBook($bookApiData: NewBook!) {
     addBook(bookApiData: $bookApiData) {
       title
       authors
@@ -15,7 +15,6 @@ mutation addBook($bookApiData: NewBook!) {
 
 export const ADD_USER= gql `
 mutation  addUser($newUser : NewUser!){
-    
     addUser(newUser :$newUser){
         token
         user{

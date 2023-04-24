@@ -34,6 +34,7 @@ class AuthService {
 
   login(idToken) {
     // Saves user token to localStorage
+    console.log(idToken,"token")
     localStorage.setItem('jwtidtoken', idToken);
     window.location.assign('/');
   }

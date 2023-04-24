@@ -14,7 +14,6 @@ const Signup = () => {
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleUserInput = ({ target }) => {
-
         const { name, value } = target;
         setUserData({ ...userData, [name]: value })
     }
@@ -29,7 +28,7 @@ const Signup = () => {
                 }
             })
             console.log(data.addUser, "Add User ----GRAPHL----------", error)
-            console.log("KEN", data.addUser.token)
+            console.log("SIGNUP-token", data.addUser.token, data,"DATA")
             Auth.login(data.addUser.token)
             setUserData({
                 name: "",
@@ -67,17 +66,6 @@ const Signup = () => {
 
         </form>
     </main>)
-
-
-    //    <Form>
-    //     <Form.Label>Username</Form.Label>
-    //     <Form.Input value={userData.name}onChange={handleUserInput} name="name" placeholder='User Profile name'/>
-    //     <Form.Label>Email</Form.Label>
-    //     <Form.Input onChange={handleUserInput} value={userData.email} name="email" placeholder='User Email' />
-    //     <Form.Label>Password</Form.Label>
-    //     <Form.Input  onChange={handleUserInput} name="password" type="password" value={userData.password} placeholder='Password' />
-    //    <Button onClick={createNewUser} type='submit'>Submit</Button>
-    //     </Form>)
 }
 
 

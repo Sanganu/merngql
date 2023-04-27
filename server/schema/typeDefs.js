@@ -4,7 +4,7 @@ const { gql } = require("apollo-server-express");
 // a function - the definition of data is listed
 // Define Query
 const typeDefs = gql`
-   input NewBook {
+   input NewItem {
     title: String!
     authors:[String]
     bookId:String!
@@ -13,7 +13,7 @@ const typeDefs = gql`
     link:String
    }
 
-   type Book{
+   type Item{
        bookId:ID!
        title:String
        authors:[String]
@@ -22,20 +22,13 @@ const typeDefs = gql`
        image:String
    }
 
-   type ApiBook{
-    title: String!
-    authors:[String]
-    id:String!
-    description:String
-    image:String  
-   }
 
    type User {
        _id: ID!
        name: String!
        email:String
        bookCount: Int
-       savedItems: [Book]
+       savedItems: [Item]
    }
    
    type Auth{
@@ -51,23 +44,32 @@ const typeDefs = gql`
    }
 
    type Query{
-       getAllBooks: [Book]  
-       getBook(title:String!) : Book
+       getAllBooks: [Item]  
+       getBook(title:String!) : Item
        getUserMe: User
-       getNewBooks(searchTerm:String!): [ApiBook]
+       getNewBooks(searchTerm:String!): [Item]
        getAllUsers: [User]
    }
    
    type Mutation{
-       addToBook(newBooks: [NewBook]) : Book
+       addToBook(newBooks: [NewItem]) : Item
        addUser(newUser: NewUser ): Auth
        deleteBook(bookId: ID! ):User
        loginUser(email: String!,password:String!):Auth
-       addBook(bookApiData: NewBook!):Book
+       addBook(bookApiData: NewItem):User
    }
 `
 
 
+/*
 
+   type ApiItem{
+    title: String!
+    authors:[String]
+    id:String!
+    description:String
+    image:String  
+   }
+*/
 module.exports = typeDefs;
     //    

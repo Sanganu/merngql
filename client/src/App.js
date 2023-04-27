@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import "./App.css";
 import { setContext } from "@apollo/client/link/context";
+// import Logout from './components/Logout';
 // Error handling the simplest method suggested in the GraphQL documentation
 const errorLink = onError(({ graphqlErrors, networkError }) => {
   if (graphqlErrors) {
@@ -62,6 +63,7 @@ function App() {
         <Route path="/signup"element={<Signup/>}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/search" element={<Searchbooks/>}/>
+        {/* <Route path="/logout" element={<Logout/>}/> */}
         <Route path="*" element={<h1>Wrong Route</h1>}/>
       </Routes>
       </>

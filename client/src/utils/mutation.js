@@ -1,13 +1,18 @@
 import {gql} from "@apollo/client";
 
 export const ADD_BOOK = gql`
-mutation AddBook($bookApiData: NewBook!) {
+mutation addBook($bookApiData: NewItem!) {
     addBook(bookApiData: $bookApiData) {
-      title
-      authors
-      bookId
-      description
-      image
+        email
+        name
+        savedItems {
+          authors
+          bookId
+          description
+          image
+          link
+          title
+        }
     }
   }
 `

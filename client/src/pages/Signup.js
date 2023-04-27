@@ -37,7 +37,7 @@ const Signup = () => {
             })
         }
         catch (error) {
-            console.error(error)
+            console.error("Signup User",error)
         }
     }
 

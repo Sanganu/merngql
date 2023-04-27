@@ -1,6 +1,6 @@
 
 
-const { User, Book } = require("../models");
+const { User, Item } = require("../models");
 const { signToken } = require("../Auth");
 const axios = require("axios");
 const { AuthenticationError } = require('apollo-server-express')
@@ -8,7 +8,7 @@ const { AuthenticationError } = require('apollo-server-express')
 const resolvers = {
     Query: {
         getAllBooks: async (parent, args) => {
-            Book.find()
+            Item.find()
                 .then(records => records)
                 .catch(error => {
                     console.log("Error in getting all books", error)
@@ -16,7 +16,7 @@ const resolvers = {
                 })
         },
         getBook: async (parent, { title }) => {
-            return Book.findOne({ title })
+            return Item.findOne({ title })
         },
         getUserMe: async (parent, args, context) => {
             // if (context.user) {
@@ -68,8 +68,9 @@ const resolvers = {
     },
     Mutation: {
         addBook: async (parent, {bookApiData}, context) => {
+            console.log("__________________****_____________________")
             console.log("addbook",bookApiData,context.user)
-            if (context.user) {
+          //  if (context.user) {
                 const addUserBooks = await User.findOneAndUpdate(
                     { _id: "628e1ec92e26bbfb586f1036"}, //context.user._id },
                     { $push: { savedItems: bookApiData } },
@@ -78,8 +79,8 @@ const resolvers = {
 
                 console.log("New Book", addUserBooks)
                 return addUserBooks;
-            }
-             throw new AuthenticationError("Please Login to save book")
+           // }
+           //  throw new AuthenticationError("Please Login to save book")
         },
         deleteBook: async (parent, args, context) => {
             if (context.user) {
@@ -111,7 +112,7 @@ const resolvers = {
         addToBook: async (parent, args, context) => {
             if (context.user) {
                 console.log("ADD New Book", args)
-                const newBooks = await Book.insertMany(args);
+                const newBooks = await Item.insertMany(args);
                 console.log("add book", newBooks)
                 return newBook;
             }

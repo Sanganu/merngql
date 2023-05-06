@@ -107,6 +107,7 @@ const resolvers = {
                 email: newUser.email,
                 _id: newUser._id
             }
+            
             return { token:jwtSign,user:newUser };
         },
         addToBook: async (parent, args, context) => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const { typeDefs, resolvers } = require("./schema");
-const { auth } = require("./Auth");
+const { authMiddleware } = require("./Auth");
 const db = require("./config/connection");
 const PORT = process.env.PORT || 3003;
 const path = require("path")
@@ -13,7 +13,7 @@ async function startgraphqlServer() {
     const graphqlserver = new ApolloServer({
         typeDefs, //how our data looks
         resolvers,
-        context: auth // methods t o interact with api calls
+        context: authMiddleware // methods t o interact with api calls
     })
 
     await graphqlserver.start()

@@ -67,20 +67,20 @@ const resolvers = {
 
     },
     Mutation: {
-        addBook: async (parent, {bookApiData}, context) => {
+        addBook: async (parent, {newItem}, context) => {
             console.log("__________________****_____________________")
-            console.log("addbook",bookApiData,context.user)
-          //  if (context.user) {
+            console.log("addbook",newItem,context.user)
+            if (context.user) {
                 const addUserBooks = await User.findOneAndUpdate(
-                    { _id: "628e1ec92e26bbfb586f1036"}, //context.user._id },
-                    { $push: { savedItems: bookApiData } },
+                    { _id: context.user._id}, 
+                    { $push: { savedItems: newItem } },
                     { new: true }
                 )
 
                 console.log("New Book", addUserBooks)
                 return addUserBooks;
-           // }
-           //  throw new AuthenticationError("Please Login to save book")
+            }
+            throw new AuthenticationError("Please Login to save book")
         },
         deleteBook: async (parent, args, context) => {
             if (context.user) {

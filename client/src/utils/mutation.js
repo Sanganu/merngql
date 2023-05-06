@@ -1,21 +1,21 @@
 import {gql} from "@apollo/client";
 
-export const ADD_BOOK = gql`
-mutation addBook($bookApiData: NewItem!) {
-    addBook(bookApiData: $bookApiData) {
-        email
-        name
-        savedItems {
-          authors
-          bookId
-          description
-          image
-          link
-          title
-        }
+export const ADD_BOOK = gql
+`mutation addBook($newItem: NewItem) {
+    addBook(newItem: $newItem) {
+      _id
+      bookCount
+      email
+      savedItems {
+        authors
+        bookId
+        description
+        image
+        link
+        title
+      }
     }
-  }
-`
+  }`
 
 
 export const ADD_USER= gql `
@@ -52,3 +52,22 @@ mutation deleteBook($bookId: String!){
     }
 }
 `
+
+
+/*
+mutation addBook($newItem: NewItem!) {
+    addBook(newItem: $newItem) {
+        email
+        name
+        savedItems {
+          authors
+          bookId
+          description
+          image
+          link
+          title
+        }
+    }
+  }
+`
+*/

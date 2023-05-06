@@ -21,10 +21,11 @@ const Home = () => {
                         booksList.push({
                             title: element.volumeInfo.title,
                             authors: element.volumeInfo.authors || ["Author information not available"],
-                            id: element.id,
+                            bookId: element.id,
                             description: element.volumeInfo.description,
                             image: element.volumeInfo.imageLinks.smallThumbnail || element.volumeInfo.imageLinks.thumbnail
-                             || "/images/placeholder-images.jpg"
+                             || "/images/placeholder-images.jpg",
+                             link: element.volumeInfo.imageLinks.smallThumbnail
                         })
                     } catch (err) {
                         console.warn("unable to retrive", element, err)
@@ -36,7 +37,8 @@ const Home = () => {
 
     }
 
-    return (<main className="container mx-auto ">
+    return (<main className="container mx-auto centered ">
+        <h3 className="text-3xl font-bold underline">Search Books</h3>
         <section className="container centered flex flex-wrap justify-evenly gap-x-2.5">
             {searchBooks.length > 0 ?
        
@@ -44,9 +46,10 @@ const Home = () => {
                     <Booklist
                         title={book.title} 
                         authors={book.authors}
-                        id={book.id}
+                        bookId={book.bookId}
                         description={book.description}
                         image={book.image}
+                        link={book.link}
                         key={key} />)
                     
 

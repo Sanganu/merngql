@@ -56,7 +56,7 @@ const typeDefs = gql`
        addUser(newUser: NewUser ): Auth
        deleteBook(bookId: ID! ):User
        loginUser(email: String!,password:String!):Auth
-       addBook(bookApiData: NewItem):User
+       addBook(newItem: NewItem):User
    }
 `
 
@@ -72,4 +72,4 @@ const typeDefs = gql`
    }
 */
 module.exports = typeDefs;
-    //    
+    

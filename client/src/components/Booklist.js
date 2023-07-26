@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_BOOK } from "../utils/mutation";
 import Auth from "../utils/auth";
-import { savedBooksList, getSavedBooksList } from "../utils/localStorage"
-
+//import { SavedBooksList, getSavedBooksList } from "../utils/localStorage"
+ import {SavedBookStore} from "../store/SavedBooksStore";
 
 
 
 const BookList = ({ title, authors, bookId, description, image ,link}) => {
-  const [savedBooks, setSavedBooks] = useState(getSavedBooksList())
+  const {bookList} = useContext(SavedBookStore)
+//  const [savedBooks, setSavedBooks] = useState(getSavedBooksList())
   const [addBook, { error }] = useMutation(ADD_BOOK);
   const [status, setStatus] = useState("false")
   const addBookToDB = () => {
@@ -33,14 +34,14 @@ const BookList = ({ title, authors, bookId, description, image ,link}) => {
         link:link
       }
       console.log(newBook,"NEW BOOK")
-      const { data } = await addBook({
-        variables: {
-         newItem: newBook
-        }
-      })
+      // const { data } = await addBook({
+      //   variables: {
+      //    newItem: newBook
+      //   }
+      // })
 
-      console.log("Book Saved", data.addBook)
-      setSavedBooks([...savedBooks, data._id])
+      console.log("Book Saved", data)
+      //setSavedBooks([...savedBooks, data._id])
     } catch (err) {
       console.error("Error in saving book", err,error)
     }
@@ -55,10 +56,11 @@ const BookList = ({ title, authors, bookId, description, image ,link}) => {
       <p className="font-bold">Author/s:{authors}</p>
     
       {Auth.loggedIn() ?
+        
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={saveBook} color='green'>
           Save Book
         </button>
-        : <h6>Please login to save</h6>}
+        : <h3 className="m-2 p-2">Please login to save</h3>}
     </article>
   )
 

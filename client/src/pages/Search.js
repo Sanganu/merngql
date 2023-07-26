@@ -22,7 +22,7 @@ const Home = () => {
                             title: element.volumeInfo.title,
                             authors: element.volumeInfo.authors || ["Author information not available"],
                             bookId: element.id,
-                            description: element.volumeInfo.description,
+                            description: element.searchInfo.textSnippet,
                             image: element.volumeInfo.imageLinks.smallThumbnail || element.volumeInfo.imageLinks.thumbnail
                              || "/images/placeholder-images.jpg",
                              link: element.volumeInfo.imageLinks.smallThumbnail

@@ -28,6 +28,7 @@ const Login = () => {
         }
       })
       console.log(data, "Add User ----GRAPHL----------", error)
+      console.log("savedBooks ===",data.loginUser.user)
       console.log("LOGIN-token", data.loginUser.token)
       Auth.login(data.loginUser.token)
       setUserLogin({
